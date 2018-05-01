@@ -1,0 +1,628 @@
+## 第一章
+# hello word
+print "hello word"
+
+## 第三章
+#help
+#F1 在help面板中显示关于当前光标位置的帮助信息
+#F2 检查当前代码行的语法
+
+pow.__doc__
+
+## 第四章
+# 数字; 字符串'',"";  列表[];
+topic="geographic information science"
+topic.count("i")
+topic.lower()
+topic.upper()
+topic.title()
+topic[2]
+topic.find("info")
+topic.split("  ")
+#删除特定的字符
+topic.strip("in")  ## lstrip  rstrip
+topic.replace("science","system")
+# format用于字符串的格式化，通过占位符来在字符串中插入一个值
+
+temp=100
+print "geographic system is {0} yuan".format(temp)
+
+# 处理列表
+cities=["beijing","tianjin","lanzhou"]
+len(cities)
+cities.sort(reverse=true)
+cities[0]
+cities[-1]
+cities.append("xining")
+
+cities.index("lanzhou")
+cities.insert(1,"yinchuan")
+
+
+#处理路径
+'c:/data'
+"c:\\data"
+r"c:/data"
+
+#模块
+import math
+from arcpy import sa
+dir(math)
+
+import time
+time.time()
+time.localtime()
+time.asctime()
+
+#条件控制
+import random
+x=random.randint(0,6)
+print x
+if x==6:
+    print "you win"
+elif x==5:
+    print "try again"
+else:
+    print "you lose"
+
+#循环语句
+i=0
+while i<=10:
+    print i
+    i +=1
+
+mylist=["A","B","C","D"]
+for letter in mylist:
+    print letter
+
+
+## 第五章
+import arcpy
+arcpy.env.workspace="c:/data"
+arcpy.analysis.Clip("","","")
+
+import arcpy
+infc=arcpy.GetParameterAsText(0)
+outfc=arcpy.GetParameterAsText(1)
+arcpy.Copy_management(infc,outfc)
+
+import arcpy
+arcpy.env.workspace="c:/data/De.gdb"
+buffer=arcpy.Buffer_analysis("qinghai","qinghai_buffer","1000 METERS")
+count=arcpy.GetCount_management(buffer)
+print count
+
+import arcpy
+tools=arcpy.ListTools("*_analysis")
+for tool in tools:
+    print arcpy.Usage(tool)
+
+import arcpy
+prjfile="c:/data/a.prj"
+spatialref=arcpy.SpatialReference(prjfile)
+myref=spatialref.name
+print myref
+
+#creat new feature with defined spatialreference
+import arcpy
+import arcpy
+from arcpy import env
+env.overwriteOutput=True
+out_path="c:/data"
+out_name="new feature"
+prjfile="c:/data/a.prj"
+spatialref=arcpy.SpatialReference(prjfile)
+arcpy.CreateFeatureclass_management(out_path,out_name,"POLYLINE","","","",spatialref)
+
+# set environment
+import arcpy
+from arcpy import env
+env.cellsize=30
+env.overwriteOutput=True
+
+## 获取并打印消息
+print arcpy.GetMessages()
+
+## 第六章
+arcpy.Exists()
+
+#
+import arcpy
+desc=arcpy.Describe("c:/data/a.shp")
+print desc.shapeType
+
+import arcpy
+fc="c:/data/a.shp"
+desc=arcpy.Describe(fc)
+sr=desc.spatialReference
+print "dataset type:" + desc.datasetType
+print "spatial reference:" + sr.name
+
+import arcpy
+from arcpy import env
+arcpy.env.workspace="c:/data/De.gdb"
+element="yangdian"
+desc=arcpy.Describe(element)
+print "data type:" + desc.dataType
+print "File path:" + desc.path
+print "catalog path:" + desc.catalogPath
+print "file name:" + desc.file
+print "base name:" + desc.baseName
+print "name:" + desc.name
+
+#list data
+listFields
+ListIndexs
+ListDatasets
+ListFeatureClasses
+ListFiles
+ListRasters
+ListTables
+ListWorkspaces
+ListVersions
+
+import arcpy
+from arcpy import env
+arcpy.env.workspace="c:/data"
+fclist=arcpy.ListFeatureClasses()
+
+
+#
+import arcpy
+from arcpy import env
+arcpy.env.workspace="c:/data/De.gdb"
+feildlst=arcpy.ListFields("yangdian")
+for feild in feildlst:
+    print "{0} is a type o {1} with a length of {2}".format(feild.name,feild.type,feild.length)
+
+## 元祖
+x=("a","b","c")
+x[2:3]
+# 字典
+statelookup={"gansu":"lanzhou","xinjiang":"wulumuqi","ningxia":"yinchuan"}
+statelookup["gansu"]
+statelookup.values()
+statelookup.items()
+
+
+import arcpy
+install=arcpy.GetInstallInfo()
+for key in install:
+    print "{0}:{1}".format(key,install[key])
+
+##第七章 处理空间数据
+#youbiao
+arcpy.da.InsertCursor(in_table,field_names)
+arcpy.da.SearchCursor(in_table,field_names)
+arcpy.da.UpdateCursor(in_table,field_names)
+
+import arcpy
+from arcpy import env
+env.workspace="c:/data"
+fc="世界线状水系.shp"
+cursor=arcpy.da.SearchCursor(fc,["OID@","SHAPE@"])
+for row in cursor:
+    print("Feature {0}:".format(row[0]))
+    partnum=0
+    for part in row[1]:
+        print("part{0}:".format(partnum))
+        for point in part:
+
+             print("{0},{1}".format(point.X,point.Y))
+        partnum +=1
+
+# 返回数据库名 所有者名字 表名
+import arcpy
+from arcpy import env
+env.workspace="c:/data/De.gdb"
+fc="yangdian"
+fullname=arcpy.ParseTableName(fc)
+namelist=fullname.split(",")
+databasename=namelist[0]
+ownername=namelist[1]
+fcname=namelist[2]
+print databasename
+print ownername
+print fcname
+
+#处理文本
+f=open("c:/data/wenben.txt","w")   ##r:read, w:write, a:append
+
+f.write("geogeraphic information system")
+f.close()
+f.seek(0)
+f.read(10)
+f.readlines()
+
+input=open("c:/data/wenben.txt")
+output=open("c:/data/wenben_2.txt","w")
+for line in input():
+    str=line.replace("ID:","")
+    str=str.replace("latitude:","")
+    str=str.replace("longtitude:","")
+    output.write(str)
+input.close()
+output.close()
+
+
+
+## 第八章
+
+#
+import arcpy
+fc="c:/Data/a.shp"
+cursor=arcpy.da.Searchcursor(fc,["SHAPE@AREA"])  ## SHAPE@XY   SHAPE@LENGTH  SHAPE@
+length=0
+for row in cursor:
+    length += row[0]
+print length
+
+#
+import arcpy
+fc="c:/Data/De.gdb/yangdian"
+cursor=arcpy.da.SearchCursor(fc,["SHAPE@XY"])  ## SHAPE@XY   SHAPE@LENGTH  SHAPE@
+for row in cursor:
+    x,y=row[0]
+    print ("{0},{1}".format(x,y))
+
+
+import arcpy, fileinput, os,string
+from arcpy import env
+env.workspace="c:/data"
+env.overwriteOutput=True
+infile="c:/data/wenben.txt"
+fc="newpoly.shp"
+##arcpy.CreateFeatureclass_management("c:/data",fc,"Polygon")
+arcpy.management.CreateFeatureclass("c:/data",fc,"polygon")
+cursor=arcpy.da.InsertCursor(fc,["SHAPE@"])
+array=arcpy.Array()
+point=arcpy.Point()
+
+
+
+#### 8.7
+import arcpy
+from arcpy import env
+env.workspace="c:/data"
+fc="yangdian.shp"
+prjfile="result.prj"
+spatialref=arcpy.SpatialReference(prjfile)
+cursor=arcpy.da.SearchCursor(fc,["SHAPE@"],"",spatialref)
+output=open("res.txt","w")
+for row in cursor:
+    output.write(str(point.X)+"  "+ str(point.Y)+ "\n")
+    output.close()
+
+
+for line in fileinput.input(infile):
+    point.ID,point.X,point.Y=line.split()
+    array.add(point)
+    polygon=arcpy.Polygon(array)
+    cursor.insertRow([polygon])
+    fileinput.close()
+    del cursor
+
+
+
+cursor.insertRow(["xining"])
+
+cursor=arcpy.da.SearchCursor(fc,["name"])
+for row in cursor:
+    print row
+
+arcpy.ValidateTableName("yangdian","c:/data/De.gdb")
+
+
+
+fieldlist=arcpy.ListFields("a.shp"," ","string")
+for field in fieldlist:
+    print field.name + "  "+ str(field.length)
+out_name="out.shp"
+prjfile="c:/data\\aabb1.prj"
+spatialref=arcpy.SpatialReference(prjfile)
+arcpy.CreateFeatureclass_management("c:/data",out_name,"POLYLINE","","","",spatialref)
+## myre=arcpy.analysis.Clip("a.shp","b.shp","aabb2.shp")
+
+## arcpy.mytools.mymodel(parameters)
+## arcpy.mymodel_mytools
+
+import arcpy
+fc="c:/data/De.gdb/yangdian"
+cursor=arcpy.da.SearchCursor(fc,["SHAPE@XY"])
+
+for row in cursor:
+    x,y =row[0]
+print ("{0},{1}".format(x,y))
+
+env.workspace="c:/data/De.gdb"
+fc="yangdian"
+fullname=arcpy.ParseFieldName(fc)
+
+namelist=fullname.split(", ")
+
+f=open("c:/data/wenben.txt","w")
+i=1
+while i <100:
+    i +=1
+    f.write("{0}".format(i))
+f.close()
+
+
+## 8.8
+import arcpy
+from arcpy import env
+env.workspace="c:/data"
+coordlist=[[17.0,20.0],[125.0,32.0],[4.0,87.0]]
+pointlist=[]
+for x,y in coordlist:
+    point= arcpy.Point(x,y)
+    pointgeometry=arcpy.PointGeometry(point)
+    pointlist.append(pointgeometry)
+arcpy.Buffer_analysis(pointlist,"buffer.shp","10 METERS")
+
+
+## 第九章
+
+import arcpy
+from arcpy import env
+env.workspace="c:/data/祖厉河NDVI""
+rasterlist=arcpy.ListRaster()
+for raster in rasterlist:
+    print raster
+
+
+import arcpy
+from arcpy import env
+env.workspace="c:/data/祖厉河NDVI"
+raster="19990718.tif"
+desc=arcpy.Describe(raster)
+print desc.dataType
+
+myraster=arcpy.Raster("19990718.tif")
+outraster=arcpy.sa.Slope(myraster)
+outraster.save("c:/data/slope.tif")
+arcpy.sa.RasterCalculator(raster*outraster,"multiplus")
+
+import arcpy
+from arcpy import env
+env.workspace="c:/data/祖厉河NDVI"
+from arcpy.sa import *
+
+tm=arcpy.Raster("19990718.tif")
+tmplus2=tm*2
+env.mask=""
+tmplus2clip=ApplyEnvironment(tmplus2)
+tmplus2clip.save("")
+
+
+## reclassfy
+import arcpy
+from arcpy import env
+from arcpy.sa import *
+env.workspace="c:/data/祖厉河NDVI"
+myremap=RemapRange([[0,0.1,0],[0.1,0.2,2],[0.2,1,3]])
+outreclass=Reclassify("19990718.tif","Value","myremap")
+outreclass.save("types4.tif")
+
+
+## raster to Nmpython
+import arcpy, scipy
+from arcpy.sa import *
+inraster=arcpy.Raster("c:/data/slope.tif")
+myarray=arcpy.RasterToNumPyArray(inraster)
+outarray=scipy.sin(myarray)
+
+## 第十章
+
+import arcpy
+mapdoc=arcpy.mapping.MapDocument("c:/data/watershed.mxd")
+
+mapdoc.save()
+arcpy.mapping.RsfreshActiveView
+del mapdoc
+
+##
+import arcpy
+mapdoc=arcpy.mapping.MapDocument("CURRENT")
+path=mapdoc.filePath
+del mapdoc
+
+##
+import arcpy
+mapdoc=arcpy.mapping.MapDocument("c:/data/watershed.mxd")
+listdf=arcpy.mapping.ListDataFrames(mapdoc)
+for df in listdf:
+    print df.name
+    listlayer=arcpy.mapping.ListLayers(df)
+    for layer in listlayer:
+        print layer.name
+
+del mapdoc
+
+arcpy.mapping.Layer(layer)
+
+## 修复链接
+import arcpy
+mapdoc=arcpy.mapping.MapDocument("c:/data/watershed.mxd")
+brokenlist= arcpy.mapping.ListBrokenDataSources(mapdoc)
+for lyr in brokenlist:
+    print lyr.name +"        "+ lyr.dataSource
+del mapdoc
+
+
+## 10.8 页面元素布局
+import arcpy
+mapdoc=arcpy.mapping.MapDocument(r"c:/data/watershed.mxd")
+elemlist=arcpy.mapping.ListLayoutElements(mapdoc)
+for elem in elemlist:
+    print elem.name + "   "+ elem.type
+del mapdoc
+
+
+
+## 第十一章
+## 多添加print
+import exceptions
+dir(exceptions)
+
+
+##
+try:
+    x=input("first number:")
+    y=input("second number:")
+    print "first / second={0}".format(float(x)/y)
+except ZeroDivisionError:
+    print "the second number cannot be zero
+
+
+##常见错误
+# 拼写错误
+# 未导入模块 arcpy os sys
+# 大小写  mylist myList
+# 路径
+# 一些语句后未添加冒号（for whole else try except)
+# 不正确的缩进
+#混淆条件判断“==”和赋值语句“=”
+
+
+##env.overwriteOutput=ture
+
+## 第十二章 创建Python类和函数
+import random
+x=random.randint(1,100)
+print x
+
+##
+import arcpy
+arcpy.env.workspace="c:/data"
+fields=arcpy.ListFields("a.shp")
+namelist=[]
+for field in fields:
+    namelist.append(field.name)
+print namelist
+
+
+## table should be a feature class, such as *.shp
+def listfieldnames(table):
+    fields = arcpy.ListFields(table)
+    namelist = []
+    for field in fields:
+        namelist.append(field.name)
+    return namelist
+#检验
+print listfieldnames("c:/data/a.shp")
+
+##路径
+import sys
+print sys.path[0]
+
+import os
+print os.getcwd()
+
+#append path
+sys.path.append("c:/data")
+#导入时运行和运行脚本
+import arcpy
+import os
+def mycooltool(<arguments>)
+    <line of code>
+    <line of code >
+    ...
+if __name__ == '__main__':
+    mycooltool(<arguments>)
+
+
+# 创建类
+class Person(object):
+    def setname(self,name):
+        self.name=name
+    def greeting(self):
+        print "my name is {0}".format(self.name)
+
+#检验
+me =Person()
+me.setname("bieq")
+me.greeting()
+
+
+##
+class Parcel(object):
+    def __init__(self,landuse,value):
+        self.landuse=landuse
+        self.value=value
+    def assessment(self):
+        if self.landuse== "SFR":
+            rate= 0.05
+        elif self.landuse == "MFR":
+                rate = 0.04
+        else:
+            rate=0.02
+        assessment = self.value * rate
+        return assessment
+
+#检验
+myparcel = Parcel("SFR", 200000)
+
+
+print ("land use:", myparcel.landuse)
+mytax=myparcel.assessment()
+print mytax
+
+## 12.6地理处理包 将函数和类打包
+
+## 第十三章
+# 1 创建一个python脚本，保存为.py文件。
+# 2 创建一个自定义工具箱（.tbx)，用于存放脚本工具。
+# 3 通过脚本添加向导向自定义工具箱中添加工具。
+# 4 修改脚本的输入和输出变量，以便整合到地理处理框架中。
+
+# Python script: copyfeatures.py
+# This script copies all feature class from a workspace into a file geodatabase
+
+# import the arcpy package
+
+import arcpy
+import os
+
+# set the current workspace
+from arcpy import env
+env.workspace="c:/data"
+env.overwriteOutput=True
+
+# creat a list of feature classes in the current workspace
+fclist = arcpy.ListFeatureClasses()
+
+# copy each feature class to a file geodatabase keep the same name
+# extensions, including .shp
+for fc in fclist:
+    fcdesc = arcpy.Describe(fc)
+    arcpy.CopyFeatures_management(fc,os.path.join("c:/data/De.gdb/",fcdesc.basename))
+
+#13.9
+import arcpy
+##fc = arcpy.GetParameterAsText(0)
+fc = "c:/data"
+result = arcpy.GetCount_management(fc)
+fcount = int(result.getOutput(0))
+if fcount == 0:
+    arcpy.AddError(fc + "has no features")
+else:
+    arcpy.AddMessage(fc + "has" + str(fcount) +"  features")
+
+## 第十四章
+import arcpy
+import os
+import sys
+scriptpath=sys.path[0]
+toolpath = os.path.dirname(scriptpath)
+tooldatapath = os.path.jion(toolpath,"tooldata")
+datapath=os.path.jion(tooldatapath,"lookup.dbf")
+
+
+    import arcpy
+    import arcpy.sa
+    fc1 = "c:/data/a.shp"
+    fc2 = "c:/data/b.shp"
+    res = "c:/data/a_b.shp"
+    arcpy.Clip_analysis(fc1,fc2,res)
+
