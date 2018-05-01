@@ -1,0 +1,2080 @@
+# usefull python codes
+
+1 Python入门
+
+1.1 字符串操作
+
+1.1.1 复制字符串
+
+#strcpy(sStr1,sStr2)
+sStr1 = 'strcpy'
+sStr2 = sStr1
+sStr1 = 'strcpy2'
+print sStr2
+1.1.2 连接字符串
+
+#strcat(sStr1,sStr2)
+sStr1 = 'strcat'
+sStr2 = 'append'
+sStr1 += sStr2
+print sStr1
+1.1.3 查找字符
+
+#strchr(sStr1,sStr2)
+sStr1 = 'strchr'
+sStr2 = 'r'
+nPos = sStr1.index(sStr2)
+print nPos
+1.1.4 比较字符串
+
+#strcmp(sStr1,sStr2)
+sStr1 = 'strchr'
+sStr2 = 'strch'
+print cmp(sStr1,sStr2)
+1.1.5 扫描字符串是否包含指定的字符
+
+#strspn(sStr1,sStr2)
+sStr1 = '12345678'
+sStr2 = '456'
+#sStr1 and chars both in sStr1 and sStr2
+print len(sStr1 and sStr2)
+1.1.6 字符串长度
+
+#strlen(sStr1)
+sStr1 = 'strlen'
+print len(sStr1)
+1.1.7 将字符串中的小写字符转换为大写字符
+
+#strlwr(sStr1)
+sStr1 = 'JCstrlwr'
+sStr1 = sStr1.upper()
+print sStr1
+1.1.8 追加指定长度的字符串
+
+#strncat(sStr1,sStr2,n)
+sStr1 = '12345'
+sStr2 = 'abcdef'
+n = 3
+sStr1 += sStr2[0:n]
+print sStr1
+1.1.9 字符串指定长度比较
+
+#strncmp(sStr1,sStr2,n)
+sStr1 = '12345'
+sStr2 = '123bc'
+n = 3
+print cmp(sStr1[0:n],sStr2[0:n])
+1.1.10 复制指定长度的字符
+
+#strncpy(sStr1,sStr2,n)
+sStr1 = ''
+sStr2 = '12345'
+n = 3
+sStr1 = sStr2[0:n]
+print sStr1
+1.1.11 字符串比较，不区分大小写
+
+#stricmp(sStr1,sStr2)
+sStr1 = 'abcefg'
+sStr2 = 'ABCEFG'
+print cmp(sStr1.upper(),sStr2.upper())
+1.1.12 将字符串前n个字符替换为指定的字符
+
+#strnset(sStr1,ch,n)
+sStr1 = '12345'
+ch = 'r'
+n = 3
+sStr1 = n * ch + sStr1[3:]
+print sStr1
+1.1.13 扫描字符串
+
+#strpbrk(sStr1,sStr2)
+sStr1 = 'cekjgdklab'
+sStr2 = 'gka'
+nPos = -1
+for c in sStr1:
+if c in sStr2:
+nPos = sStr1.index(c)
+break
+print nPos
+1.1.14 翻转字符串
+
+#strrev(sStr1)
+sStr1 = 'abcdefg'
+sStr1 = sStr1[::-1]
+print sStr1
+1.1.15 找字符串
+
+python strstr
+
+#strstr(sStr1,sStr2)
+sStr1 = 'abcdefg'
+sStr2 = 'cde'
+print sStr1.find(sStr2)
+1.1.16 分割字符串
+
+#strtok(sStr1,sStr2)
+sStr1 = 'ab,cde,fgh,ijk'
+sStr2 = ','
+sStr1 = sStr1[sStr1.find(sStr2) + 1:]
+print sStr1
+ 
+
+1.2 语法
+
+1.2.1 Python 变量类型
+
+Python是有变量类型的，而且会强制检查变量类型。
+内置的变量类型有如下几种：
+
+#整型
+integer_number = 90
+ 
+#浮点
+float_number = 90.4
+ 
+#复数
+complex_number = 10 + 10j
+ 
+#list 序列
+sample_list = [1,2,3,'abc']
+ 
+#dictionary 字典
+sample_dic = {"key":value, 2:3}
+ 
+#tuple 只读的序列
+sample_tuple = (1,3,"ab")
+1.2.2 Python 程序流程控制
+
+1.2.2.1 条件判断结构
+
+flag1 = some_value
+flag2 = other_value
+if flag1:
+do_function_1()
+elif flag2:
+do_function_2()
+else:
+do_function_3()
+1.2.2.2 循环结构
+
+for i in range(0, 10):
+print(i)
+ 
+for i in ['a','b','c','dd','eee'];
+print(i)
+ 
+
+1.2.3 Python 列表(list)操作
+
+1.2.3.1 创建列表
+
+sample_list = ['a',1,('a','b')]
+1.2.3.2 Python 列表操作
+
+sample_list = ['a','b',0,1,3]
+1.2.3.3 得到列表中的某一个值
+
+value_start = sample_list[0]
+end_value = sample_list[-1]
+1.2.3.4 删除列表的第一个值
+
+del sample_list[0]
+1.2.3.5 在列表中插入一个值
+
+sample_list[0:0] = ['sample value']
+1.2.3.6 得到列表的长度
+
+list_length = len(sample_list)
+1.2.3.7 列表遍历
+
+for element in sample_list:
+print(element)
+1.2.3.8 Python 列表高级操作/技巧
+
+l  产生一个数值递增列表
+
+num_inc_list = range(30)
+#will return a list [0,1,2,...,29]
+l  用某个固定值初始化列表
+
+initial_value = 0
+list_length = 5
+sample_list = [ initial_value for i in range(10)]
+sample_list = [initial_value]*list_length
+# sample_list ==[0,0,0,0,0]
+2 Python在ArcGIS常用语句
+
+2.1 属性选择
+
+temp_layer="temp_layer"
+
+gp.MakeFeatureLayer_management(XZQJXName, temp_layer)
+
+gp.SelectLayerByAttribute_management(temp_layer, "NEW_SELECTION", "JXLX is null")
+
+num=gp.getcount(temp_layer)
+
+if num>0:
+
+gp.AddMessage("返回:"+str(num))
+
+return
+
+2.2 是否存在
+
+if gp.exists(DLJX_buffer):
+
+2.3 图层条件另存
+
+gp.Select_analysis(layername,DLJX2,"") #备份
+
+layername是原始数据
+
+中间的备份后表名，最后是条件
+
+2.4 擦除Erase
+
+gp.Erase_analysis(newtablename, temp_layer, DLJX, "")
+
+2.5 面转线
+
+ 
+
+gp.PolygonToLine_management(DLTB, DLTB_PolygonToLine)
+
+2.6 缓冲区
+
+gp.Buffer_analysis(XZDW, XZDW_Buffer, ".5 Meters", "FULL", "ROUND", "NONE", "")
+
+2.7 删除数据
+
+gp.Delete_management(DLTB_PolygonToLine, "FeatureClass") #删除临时数据
+
+2.8 追加数据
+
+gp.Append_management(DLTB_Select, outlayername, "TEST", "", "")
+
+后面outlayername是目标图层
+
+前面是要追加的数据
+
+3 Python在ArcGIS中应用
+
+3.1 获得字段位置
+
+def getfieldidx(TableName,fieldname): #获得字段位置
+
+desc = gp.Describe(TableName)
+
+fields = desc.Fields
+
+field=fields.next()
+
+i=-1;
+
+while field:
+
+# Check the field name, perform a calculation when finding the field 'Flag'
+
+#
+
+if field.Name.upper() == fieldname.upper():
+
+gp.AddMessage("======:"+fieldname)
+
+return i
+
+field=fields.next()
+
+i=i+1
+
+return -1
+
+3.2 UpdateCursor和setvalue使用例子
+
+def UpdateAngle(dgx):
+
+desc = gp.Describe(dgx)
+
+shapefieldname = desc.ShapeFieldName
+
+angleidx=getfieldidx(dgx,"Angle")
+
+gp.AddMessage("正在处理======angleidx:"+str(angleidx))
+
+ 
+
+rows = gp.UpdateCursor(dgx,"Angle>90 and Angle<270")
+
+row = rows.Next()
+
+p=0
+
+while row:
+
+angle = row.GetValue("Angle")
+
+angle=angle+180
+
+if angle>=360:
+
+angle=angle-360
+
+row.SetValue("Angle",angle);
+
+rows.UpdateRow(row)
+
+gp.AddMessage("正在处理======angle:"+str(p)+":"+str(angle))
+
+p=p+1
+
+row = rows.Next()
+
+3.3 更新线的长度到字段
+
+代码：
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 周二 五月 11 2010 12:24:15 下午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inFeatureclass  = gp.GetParameterAsText(0)
+
+inField  = gp.GetParameterAsText(1)
+rows = gp.UpdateCursor(inFeatureclass)
+
+row = rows.Next()
+
+ 
+
+# Calculate the total length of all roads
+
+#
+
+length = 0
+
+try:
+
+while row:
+
+# Create the geometry object
+
+#
+
+feat = row.shape
+
+length = length + feat.Length
+
+row.SetValue(inField,feat.Length)
+
+rows.UpdateRow(row)
+
+row = rows.Next()
+
+# Print the total length of all roads
+
+#
+
+gp.AddMessage("总线的长度:"+str(length))
+
+except Exception, ErrorDesc:
+
+gp.AddError(str(ErrorDesc))
+
+参数设置
+
+ 
+
+有输出表可以 model调用
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 周二 五月 11 2010 12:24:15 下午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inFeatureclass  = gp.GetParameterAsText(0) #原始数据
+
+inField  = gp.GetParameterAsText(1)
+
+outFeatureclass  = gp.GetParameterAsText(2) #输出数据
+
+gp.CopyFeatures(inFeatureclass,outFeatureclass)
+
+ 
+
+ 
+
+rows = gp.UpdateCursor(outFeatureclass)
+
+row = rows.Next()
+
+ 
+
+# Calculate the total length of all roads
+
+#
+
+length = 0
+
+try:
+
+while row:
+
+# Create the geometry object
+
+#
+
+feat = row.shape
+
+length = length + feat.Length
+
+row.SetValue(inField,feat.Length)
+
+rows.UpdateRow(row)
+
+row = rows.Next()
+
+# Print the total length of all roads
+
+#
+
+gp.AddMessage("总线的长度:"+str(length))
+
+except Exception, ErrorDesc:
+
+gp.AddError(str(ErrorDesc))
+
+ 
+
+ 
+
+3.4 批量给一个Workspace中表加字段
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 1 <输入workspace或gdb>
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inworkspace = gp.GetParameterAsText(0)
+
+ 
+
+ 
+
+gp.Workspace = inworkspace
+
+fcs = gp.ListFeatureClasses()
+
+fc = fcs.Next()
+
+while fc:
+
+try:
+
+# Process: 增加id字段...
+
+gp.AddField_management(fc, "id", "LONG", "", "", "", "序号", "NULLABLE", "NON_REQUIRED", "")
+
+ 
+
+# Process: 增加名称...
+
+gp.AddField_management(fc, "name", "TEXT", "", "", "16", "名称", "NULLABLE", "NON_REQUIRED", "")
+
+gp.AddMessage("fc="+fc+",加字段已完成");
+
+ 
+
+except Exception, ErrorDesc:
+
+#If an error set output boolean parameter "Error" to True.
+
+gp.AddError(str(ErrorDesc))
+
+print "Failed to convert %s\\%s\n%s" % (fc, gp.GetMessages(2))
+
+ 
+
+# Proceed to the next feature class
+
+fc = fcs.Next()
+
+ 
+
+3.5 获得一个Workspace中FeatureDataset
+
+---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 1 <输入图层>
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inworkspace = gp.GetParameterAsText(0)
+
+ 
+
+ 
+
+gp.Workspace = inworkspace
+
+pItems = gp.ListDatasets()
+
+pItem = pItems.Next()
+
+while pItem:
+
+gp.AddMessage("pItem="+pItem);
+
+pItem = pItems.Next()
+
+3.6 矢量批量切割按图幅、行政区划
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 矢量图批量切割， by 闫磊 4个参数
+
+# 原始数据 是图层，可以多选
+
+# 切割工具是是接幅表 或则行政
+
+# 字段是输出mdb名称
+
+# 输出路径
+
+# ---------------------------------------------------------------------------
+
+# Create Geoprocessing Object
+
+import arcgisscripting, sys, os, string
+
+gp = arcgisscripting.create()
+
+gp.overwriteoutput = 1
+
+inworkspace  = gp.GetParameterAsText(0)
+
+gp.AddMessage("1="+inworkspace)
+
+clipshp  = gp.GetParameterAsText(1)
+
+gp.AddMessage("2=clipshp"+clipshp)
+
+fieldname= gp.GetParameterAsText(2)
+
+gp.AddMessage("3=fieldname"+fieldname)
+
+outworkspace  = gp.GetParameterAsText(3)
+
+gp.AddMessage("4="+outworkspace)
+
+mdbbool  = gp.GetParameterAsText(4)
+
+gp.AddMessage("5="+mdbbool)
+
+ 
+
+desc = gp.Describe(clipshp)
+
+filepath=desc.CatalogPath
+
+p=filepath.find(".mdb")
+
+ 
+
+ 
+
+fields = desc.Fields
+
+ftype="String"
+
+field=fields.next()
+
+while field:
+
+# Check the field name, perform a calculation when finding the field 'Flag'
+
+#
+
+if field.Name == fieldname:
+
+# Set the value for the field and exit loop
+
+#
+
+ftype=field.Type
+
+break
+
+field=fields.next()
+
+jfb_Select="c:\\yl.shp" #不能c:\要c:\\或则c:/
+
+ 
+
+rows = gp.searchcursor(clipshp)
+
+#gp.AddMessage("5=执行到这里")
+
+row = rows.next()
+
+#gp.AddMessage("6=执行到这里")
+
+while row:
+
+#gp.AddMessage("7=执行到这里")
+
+fieldvalue =""+ row.GetValue(fieldname)
+
+#gp.AddMessage("fieldvalue="+fieldvalue)
+
+if p>0: #mdb
+
+Expression="["+fieldname +"]="
+
+else:
+
+Expression="""+fieldname +""="
+
+#gp.AddMessage("Expression1="+Expression)
+
+if ftype=="String":
+
+Expression=Expression+"'"+fieldvalue+"'"
+
+else:
+
+Expression=Expression+fieldvalue
+
+ 
+
+#gp.AddMessage("Expression2="+Expression)
+
+gp.Select_analysis(clipshp, jfb_Select,Expression)
+
+#gp.AddMessage("6=clipshp"+clipshp)
+
+out_mdb=""
+
+#gp.AddMessage("======================================================out_mdb"+out_mdb)
+
+if mdbbool=="True":
+
+out_mdb=outworkspace + "\"+fieldvalue+".mdb"  #os.path.basename(dataset)
+
+else:
+
+out_mdb=outworkspace + "\"+fieldvalue+".gdb"
+
+gp.AddMessage("3=out_mdb"+out_mdb)
+
+if not gp.Exists(out_mdb):
+
+if mdbbool=="True":
+
+gp.CreatePersonalGDB(os.path.dirname(out_mdb),os.path.basename(out_mdb))
+
+else:
+
+gp.CreateFileGDB(os.path.dirname(out_mdb),os.path.basename(out_mdb))
+
+#gp.AddMessage("88888888888888888888888888888888888888")
+
+mydatasets= string.split(inworkspace,";")
+
+ 
+
+for dataset in mydatasets:
+
+ 
+
+try:
+
+gp.AddMessage("正在切割="+dataset+"：为"+out_mdb+"\"+ os.path.basename(dataset))
+
+gp.Clip_analysis(dataset, jfb_Select,out_mdb+"\"+ os.path.basename(dataset), ".001 Meters")
+
+except Exception, ErrorDesc:
+
+#If an error set output boolean parameter "Error" to True.
+
+gp.AddError(str(ErrorDesc))
+
+row = rows.next()
+
+if gp.exists(jfb_Select):
+
+gp.Delete_management(jfb_Select)
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+运行界面
+
+ 
+
+输出mdb，切割使用shp
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 矢量图批量切割， by 闫磊 4个参数
+
+# 原始数据 是图层，可以多选
+
+# 切割工具是是接幅表 或则行政
+
+# 字段是输出mdb名称
+
+# 输出路径
+
+# ---------------------------------------------------------------------------
+
+# Create Geoprocessing Object
+
+import arcgisscripting, sys, os, string
+
+gp = arcgisscripting.create()
+
+gp.overwriteoutput = 1
+
+inworkspace  = gp.GetParameterAsText(0)
+
+gp.AddMessage("1="+inworkspace)
+
+clipshp  = gp.GetParameterAsText(1)
+
+gp.AddMessage("2=clipshp"+clipshp)
+
+fieldname= gp.GetParameterAsText(2)
+
+gp.AddMessage("3=fieldname"+fieldname)
+
+outworkspace  = gp.GetParameterAsText(3)
+
+gp.AddMessage("4="+outworkspace)
+
+rows = gp.searchcursor(clipshp)
+
+gp.AddMessage("5=执行到这里")
+
+row = rows.next()
+
+jfb_Select="e:\\yl.shp" #不能c:\要c:\\或则c:/
+
+gp.AddMessage("6=执行到这里")
+
+while row:
+
+gp.AddMessage("7=执行到这里")
+
+fieldvalue ="" + row.GetValue(fieldname)
+
+gp.AddMessage("fieldvalue="+fieldvalue)
+
+Expression="""+fieldname +"" like '"+fieldvalue+"'"
+
+gp.AddMessage("Expression="+Expression)
+
+gp.Select_analysis(clipshp, jfb_Select,Expression)
+
+gp.AddMessage("6=clipshp"+clipshp)
+
+out_mdb=outworkspace + "\"+fieldvalue+".mdb"  #os.path.basename(dataset)
+
+ 
+
+ 
+
+p=out_mdb.find(".")
+
+out_mdb=out_mdb[0:p]+".mdb"
+
+gp.AddMessage("3="+out_mdb)
+
+ 
+
+if not gp.Exists(out_mdb):
+
+gp.CreatePersonalGDB(os.path.dirname(out_mdb),os.path.basename(out_mdb))
+
+try:
+
+indatasets = string.split(inworkspace , ";")
+
+ 
+
+for dataset in indatasets:
+
+gp.AddMessage("正在切割="+dataset+"：为"+out_mdb+"\"+ os.path.basename(dataset))
+
+gp.Clip_analysis(dataset, jfb_Select,out_mdb+"\"+ os.path.basename(dataset), ".001 Meters")
+
+ 
+
+except Exception, ErrorDesc:
+
+#If an error set output boolean parameter "Error" to True.
+
+gp.AddError(str(ErrorDesc))
+
+row = rows.next()
+
+ 
+
+ 
+
+ 
+
+ 
+
+3.7 影像切割
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 影像批量切割， by 闫磊 4个参数
+
+# 原始影像数据
+
+# 切割工具是是接幅表 或则行政
+
+# 字段是输出gdb名称
+
+# 输出路径
+
+# ---------------------------------------------------------------------------
+
+# Create Geoprocessing Object
+
+import arcgisscripting, sys, os, string,types
+
+gp = arcgisscripting.create(9.3)
+
+gp.overwriteoutput = 1
+
+oldraster  = gp.GetParameterAsText(0)
+
+gp.AddMessage("1oldraster="+oldraster)
+
+clipshp  = gp.GetParameterAsText(1)
+
+gp.AddMessage("2clipshp="+clipshp)
+
+fieldname= gp.GetParameterAsText(2)
+
+gp.AddMessage("3fieldname="+fieldname)
+
+outworkspace  = gp.GetParameterAsText(3)
+
+gp.AddMessage("4="+outworkspace)
+
+ 
+
+desc = gp.Describe(clipshp)
+
+filepath=desc.CatalogPath
+
+p=filepath.find(".mdb")
+
+ 
+
+ 
+
+fields = desc.Fields
+
+ftype="String"
+
+for field in fields:
+
+# Check the field name, perform a calculation when finding the field 'Flag'
+
+#
+
+if field.Name == fieldname:
+
+# Set the value for the field and exit loop
+
+#
+
+ftype=field.Type
+
+break
+
+ 
+
+rows = gp.searchcursor(clipshp)
+
+row = rows.next()
+
+jfb_Select=outworkspace+"\\temp.shp" #不能c:\要c:\\或则c:/
+
+#gp.CheckOutExtension("spatial")
+
+ 
+
+while row:
+
+try:
+
+ 
+
+value=str(row.GetValue(fieldname))
+
+fieldvalue = value
+
+if p>0: #mdb
+
+Expression="["+fieldname +"]="
+
+else:
+
+Expression="""+fieldname +""="
+
+if ftype=="String":
+
+Expression=Expression+"'"+fieldvalue+"'"
+
+else:
+
+Expression=Expression+fieldvalue
+
+ 
+
+gp.AddMessage("Expression="+Expression+",jfb_Select="+jfb_Select+",clipshp="+clipshp)
+
+gp.Select_analysis(clipshp, jfb_Select, Expression)
+
+ 
+
+out_raster =outworkspace+"/"+fieldvalue+".img"
+
+gp.ExtractByMask_sa(oldraster, jfb_Select, out_raster)
+
+except Exception, ErrorDesc:
+
+#If an error set output boolean parameter "Error" to True.
+
+gp.AddError(str(ErrorDesc))
+
+ 
+
+row = rows.next()
+
+ 
+
+if gp.exists(jfb_Select):
+
+gp.Delete_management(jfb_Select)
+
+参数设置：
+
+ 
+
+ 
+
+界面：
+
+ 
+
+最终代码，考虑了数字和字符串
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 影像批量切割， by 闫磊 4个参数
+
+# 原始影像数据
+
+# 切割工具是是接幅表 或则行政
+
+# 字段是输出gdb名称
+
+# 输出路径
+
+# ---------------------------------------------------------------------------
+
+# Create Geoprocessing Object
+
+import arcgisscripting, sys, os, string,types
+
+gp = arcgisscripting.create(9.3)
+
+gp.overwriteoutput = 1
+
+oldraster  = gp.GetParameterAsText(0)
+
+gp.AddMessage("1oldraster="+oldraster)
+
+clipshp  = gp.GetParameterAsText(1)
+
+gp.AddMessage("2clipshp="+clipshp)
+
+fieldname= gp.GetParameterAsText(2)
+
+gp.AddMessage("3fieldname="+fieldname)
+
+outworkspace  = gp.GetParameterAsText(3)
+
+gp.AddMessage("4="+outworkspace)
+
+ 
+
+desc = gp.Describe(clipshp)
+
+ 
+
+fields = desc.Fields
+
+ftype="String"
+
+for field in fields:
+
+# Check the field name, perform a calculation when finding the field 'Flag'
+
+#
+
+if field.Name == fieldname:
+
+# Set the value for the field and exit loop
+
+#
+
+ftype=field.Type
+
+break
+
+ 
+
+rows = gp.searchcursor(clipshp)
+
+row = rows.next()
+
+jfb_Select=outworkspace+"\\temp.shp" #不能c:\要c:\\或则c:/
+
+#gp.CheckOutExtension("spatial")
+
+ 
+
+while row:
+
+try:
+
+ 
+
+value=str(row.GetValue(fieldname))
+
+fieldvalue = value
+
+if ftype=="String":
+
+Expression="""+fieldname +""='"+fieldvalue+"'"
+
+else:
+
+Expression="""+fieldname +""="+fieldvalue
+
+ 
+
+gp.AddMessage("Expression="+Expression+",jfb_Select="+jfb_Select+",clipshp="+clipshp)
+
+gp.Select_analysis(clipshp, jfb_Select, Expression)
+
+ 
+
+out_raster =outworkspace+"/"+fieldvalue+".img"
+
+gp.ExtractByMask_sa(oldraster, jfb_Select, out_raster)
+
+except Exception, ErrorDesc:
+
+#If an error set output boolean parameter "Error" to True.
+
+gp.AddError(str(ErrorDesc))
+
+ 
+
+row = rows.next()
+
+ 
+
+if gp.exists(jfb_Select):
+
+gp.Delete_management(jfb_Select)
+
+3.8 影像切割另一种方法代码，要先打开数据
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 影像批量切割， by 闫磊 4个参数
+
+# 原始影像数据  不要临时导出数据,要打开数据
+
+# 切割工具是是接幅表 或则行政
+
+# 字段是输出gdb名称
+
+# 输出路径
+
+# ---------------------------------------------------------------------------
+
+# Create Geoprocessing Object
+
+import arcgisscripting, sys, os, string,types
+
+gp = arcgisscripting.create(9.3)
+
+gp.overwriteoutput = 1
+
+oldraster  = gp.GetParameterAsText(0)
+
+gp.AddMessage("1oldraster="+oldraster)
+
+clipshp  = gp.GetParameterAsText(1)
+
+gp.AddMessage("2clipshp="+clipshp)
+
+fieldname= gp.GetParameterAsText(2)
+
+gp.AddMessage("3fieldname="+fieldname)
+
+outworkspace  = gp.GetParameterAsText(3)
+
+gp.AddMessage("4="+outworkspace)
+
+ 
+
+desc = gp.Describe(clipshp)
+
+ 
+
+fields = desc.Fields
+
+ftype="String"
+
+for field in fields:
+
+# Check the field name, perform a calculation when finding the field 'Flag'
+
+#
+
+if field.Name == fieldname:
+
+# Set the value for the field and exit loop
+
+#
+
+ftype=field.Type
+
+break
+
+ 
+
+ 
+
+rows = gp.searchcursor(clipshp)
+
+row = rows.next()
+
+ 
+
+#gp.CheckOutExtension("spatial")
+
+ 
+
+while row:
+
+try:
+
+ 
+
+value=str(row.GetValue(fieldname))
+
+fieldvalue = value
+
+if ftype=="String":
+
+Expression="""+fieldname +""='"+fieldvalue+"'"
+
+else:
+
+Expression="""+fieldname +""="+fieldvalue
+
+gp.AddMessage("Expression="+Expression+",clipshp="+clipshp)
+
+gp.SelectLayerByAttribute_management(clipshp, "NEW_SELECTION", Expression)
+
+ 
+
+out_raster =outworkspace+"/"+fieldvalue+".img"
+
+gp.ExtractByMask_sa(oldraster, clipshp, out_raster)
+
+except Exception, ErrorDesc:
+
+#If an error set output boolean parameter "Error" to True.
+
+gp.AddError(str(ErrorDesc))
+
+ 
+
+row = rows.next()
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+3.9 对一个目录下（含子目录）所有GeoDatabase紧缩
+
+import arcgisscripting
+
+import os
+
+from os.path import join, getsize
+
+gp = arcgisscripting.create()
+
+inpath  = gp.GetParameterAsText(0)
+
+for root, dirs, files  in os.walk(inpath):
+
+         gp.workspace = root
+
+        
+
+         # List all access workspaces in the current workspace
+
+         workspaces = gp.listworkspaces("*", "access")
+
+         workspace = workspaces.next()
+
+         try:
+
+                   while workspace:
+
+                       # Compact each geodatabase
+
+                       gp.AddMessage("处理名字mdb:"+workspace)
+
+                       gp.compact(workspace)
+
+                       workspace = workspaces.next()
+
+         except Exception, ErrorDesc:
+
+             gp.AddError(str(ErrorDesc))     
+
+         workspaces = gp.listworkspaces("*", "FileGDB")
+
+         workspace = workspaces.next()
+
+         try:
+
+                   while workspace:
+
+                       # Compact each geodatabase
+
+                       gp.AddMessage("处理名字FileGDB:"+workspace)
+
+                       gp.compact(workspace)
+
+                       workspace = workspaces.next()
+
+         except Exception, ErrorDesc:
+
+             gp.AddError(str(ErrorDesc))  
+
+运行界面
+
+参数设置
+
+ 
+
+3.10 修复一个目录下所有shp文件
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 1 <输入workspace或gdb>
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inworkspace = gp.GetParameterAsText(0)
+
+ 
+
+ 
+
+gp.Workspace = inworkspace
+
+fcs = gp.ListFeatureClasses("", "Polygon", "")
+
+fc = fcs.Next()
+
+while fc:
+
+    try:
+
+       gp.RepairGeometry_management(inworkspace+"\"+fc+".shp", "DELETE_NULL")
+
+       gp.AddMessage("处理图层:"+inworkspace+"\"+fc+".shp")
+
+    except Exception, ErrorDesc:
+
+        #If an error set output boolean parameter "Error" to True.
+
+        gp.AddError(str(ErrorDesc))
+
+       
+
+    # Proceed to the next feature class
+
+    fc = fcs.Next()
+
+对于MDB
+
+ 
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 1 <输入workspace或gdb>
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inworkspace = gp.GetParameterAsText(0)
+
+ 
+
+ 
+
+gp.Workspace = inworkspace
+
+fcs = gp.ListFeatureClasses("", "Polygon", "")
+
+fc = fcs.Next()
+
+while fc:
+
+    try:
+
+       gp.RepairGeometry_management(inworkspace+"\"+fc, "DELETE_NULL")
+
+       gp.AddMessage("处理图层:"+inworkspace+"\"+fc)
+
+    except Exception, ErrorDesc:
+
+        #If an error set output boolean parameter "Error" to True.
+
+        gp.AddError(str(ErrorDesc))
+
+       
+
+    # Proceed to the next feature class
+
+    fc = fcs.Next()
+
+ 
+
+              
+
+3.11 修复一个MBD下所有面文件(含数据集)
+
+ 
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 1 <输入workspace或gdb>
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inworkspace = gp.GetParameterAsText(0)
+
+ 
+
+ 
+
+gp.Workspace = inworkspace
+
+ 
+
+fcs = gp.ListFeatureClasses("", "Polygon", "")
+
+fc = fcs.Next()
+
+while fc:
+
+    try:
+
+       gp.RepairGeometry_management(inworkspace+"\"+fc, "DELETE_NULL")
+
+       gp.AddMessage("处理图层:"+inworkspace+"\"+fc)
+
+    except Exception, ErrorDesc:
+
+        #If an error set output boolean parameter "Error" to True.
+
+        gp.AddError(str(ErrorDesc))
+
+       
+
+    # Proceed to the next feature class
+
+    fc = fcs.Next()
+
+ 
+
+datasets = gp.listdatasets("", "")
+
+dataset = datasets.Next()
+
+while dataset:
+
+    gp.AddMessage("处理图层:"+dataset)
+
+    gp.Workspace = inworkspace+"\"+dataset
+
+    fcs = gp.ListFeatureClasses("", "Polygon", "")
+
+    fc = fcs.Next()
+
+    while fc:
+
+        try:
+
+           gp.RepairGeometry_management(fc, "DELETE_NULL")
+
+           gp.AddMessage("处理图层:"+fc)
+
+        except Exception, ErrorDesc:
+
+            #If an error set output boolean parameter "Error" to True.
+
+            gp.AddError(str(ErrorDesc))
+
+       
+
+        # Proceed to the next feature class
+
+        fc = fcs.Next()
+
+    dataset = datasets.Next()
+
+3.12 修复一个目录下含子目录，所有MBD中下面文件(含数据集)
+
+import arcgisscripting
+
+import os
+
+from os.path import join, getsize
+
+gp = arcgisscripting.create()
+
+inpath  = gp.GetParameterAsText(0)
+
+for root, dirs, files  in os.walk(inpath):
+
+         gp.workspace = root
+
+         # List all access workspaces in the current workspace
+
+         workspaces = gp.listworkspaces("*", "access")
+
+        
+
+         inworkspace = workspaces.next()
+
+         while inworkspace:
+
+                   gp.Workspace = inworkspace
+
+ 
+
+                   fcs = gp.ListFeatureClasses("", "Polygon", "")
+
+                   fc = fcs.Next()
+
+                   while fc:
+
+                            try:
+
+                                     gp.RepairGeometry_management(inworkspace+"\"+fc, "DELETE_NULL")
+
+                                     gp.AddMessage("处理图层:"+inworkspace+"\"+fc)
+
+                            except Exception, ErrorDesc:
+
+                                     #If an error set output boolean parameter "Error" to True.
+
+                                     gp.AddError(str(ErrorDesc))
+
+                            # Proceed to the next feature class
+
+                            fc = fcs.Next()
+
+ 
+
+                   datasets = gp.listdatasets("", "")
+
+                   dataset = datasets.Next()
+
+                   while dataset:
+
+                            gp.AddMessage("处理图层:"+dataset)
+
+                            gp.Workspace = inworkspace+"\"+dataset
+
+                            fcs = gp.ListFeatureClasses("", "Polygon", "")
+
+                            fc = fcs.Next()
+
+                            while fc:
+
+                                     try:
+
+                                               gp.RepairGeometry_management(fc, "DELETE_NULL")
+
+                                               gp.AddMessage("处理图层:"+fc)
+
+                                     except Exception, ErrorDesc:
+
+                                               #If an error set output boolean parameter "Error" to True.
+
+                                               gp.AddError(str(ErrorDesc))
+
+                                     # Proceed to the next feature class
+
+                                     fc = fcs.Next()
+
+                            dataset = datasets.Next()
+
+                   inworkspace = workspaces.next()
+
+ 
+
+3.13 #修复一个目录下含子目录，所有shp面文件
+
+import arcgisscripting
+
+import os
+
+from os.path import join, getsize
+
+gp = arcgisscripting.create()
+
+inpath  = gp.GetParameterAsText(0)
+
+for root, dirs, files  in os.walk(inpath):
+
+         gp.workspace = root
+
+         inworkspace=root
+
+        
+
+         fcs = gp.ListFeatureClasses("", "Polygon", "")
+
+         fc = fcs.Next()
+
+         while fc:
+
+                   try:
+
+                            gp.RepairGeometry_management(inworkspace+"\"+fc+".shp", "DELETE_NULL")
+
+                            gp.AddMessage("处理图层:"+inworkspace+"\"+fc+".shp")
+
+                   except Exception, ErrorDesc:
+
+                            #If an error set output boolean parameter "Error" to True.
+
+                                     gp.AddError(str(ErrorDesc))
+
+                                     # Proceed to the next feature class
+
+                   fc = fcs.Next()
+
+                             
+
+ 
+
+3.14 将一个目录下含子目录所有gdb转成mdb
+
+ 
+
+# -*- coding: cp936 -*-
+
+# ---------------------------------------------------------------------------
+
+# 1.py
+
+# Created on: 星期日 一月 10 2010 11:02:13 上午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: 1 <输入workspace>,把一个目录含子目录的gdb，转换为mdb
+
+# ---------------------------------------------------------------------------
+
+ 
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+def tomdb(inworkspace,outworkspace,gp):
+
+    gp.AddMessage("进入子函数处理图层:"+outworkspace+":"+inworkspace+"===========")
+
+    pathstr=os.path.dirname(outworkspace)
+
+    if not os.path.exists(pathstr):
+
+       os.makedirs(pathstr)
+
+   
+
+    if not gp.Exists(outworkspace):
+
+        gp.CreatePersonalGDB(pathstr,os.path.basename(outworkspace))
+
+    gp.AddMessage("到这里:"+outworkspace+":"+inworkspace+"===========")
+
+    gp.Workspace = inworkspace
+
+    fcs = gp.ListFeatureClasses("", "", "")
+
+    fc = fcs.Next()
+
+    while fc:
+
+   
+
+            try:
+
+                    gp.AddMessage("进入子函数处理图层:"+inworkspace+"\"+fc)
+
+                    gp.CopyFeatures(inworkspace+"\"+fc, outworkspace+"\"+fc)
+
+            except Exception, ErrorDesc:
+
+                    #If an error set output boolean parameter "Error" to True.
+
+                    gp.AddError(str(ErrorDesc))
+
+                    # Proceed to the next feature class
+
+            fc = fcs.Next()
+
+            #数据集
+
+    pItems = gp.ListDatasets()
+
+    pItem = pItems.Next()
+
+    while pItem:
+
+            try:
+
+                    gp.AddMessage("处理数据集:"+inworkspace+"\"+pItem)
+
+                    gp.Copy_management(inworkspace+"\"+pItem, outworkspace+"\"+pItem,"FeatureDataset")
+
+            except Exception, ErrorDesc:
+
+                    #If an error set output boolean parameter "Error" to True.
+
+                    gp.AddError(str(ErrorDesc))
+
+            pItem = pItems.Next()      
+
+       
+
+ 
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+ 
+
+inworkspace = gp.GetParameterAsText(0)
+
+outworkspace = gp.GetParameterAsText(1)
+
+if not gp.Exists(outworkspace):
+
+    gp.CreateFolder_management(os.path.dirname(outworkspace),os.path.basename(outworkspace))
+
+ 
+
+   
+
+ 
+
+inpath  = gp.GetParameterAsText(0)
+
+for root, dirs, files  in os.walk(inpath):
+
+         gp.workspace = root
+
+              
+
+         workspaces = gp.listworkspaces("*", "FileGDB")
+
+         workspace = workspaces.next()
+
+         try:
+
+                   while workspace:
+
+                       # Compact each geodatabase
+
+                       gp.AddMessage("处理名字FileGDB:"+workspace)
+
+                       outname=workspace.replace(inworkspace,"")+os.path.basename(workspace)              
+
+                       p=outname.find(".")
+
+                       outname=outname[0:p]+".mdb"
+
+                       tomdb(workspace,outworkspace+os.sep+outname,gp)
+
+                       workspace = workspaces.next()
+
+         except Exception, ErrorDesc:
+
+             gp.AddError(str(ErrorDesc))   
+
+ 
+
+3.15     在不同工作空间类型之间迁移数据
+
+ 
+
+import arcpy
+
+mxd = arcpy.mapping.MapDocument(r"C:\Project\Project.mxd")
+
+mxd.replaceWorkspaces(r"C:\Project\Data", "SHAPEFILE_WORKSPACE", r"C:\Project\Data\Parcels.gdb", "FILEGDB_WORKSPACE")
+
+mxd.replaceWorkspaces(r"C:\Project\Data\Transportation.mdb", "ACCESS_WORKSPACE", r"C:\Project\Data\Transportation.gdb", "FILEGDB_WORKSPACE")
+
+mxd.saveACopy(r"C:\Project\Project2.mxd")
+
+del mxd
+
+ 
+
+3.16 综合例子
+
+# ---------------------------------------------------------------------------
+
+# rr.py
+
+# Created on: 周二 十一月 02 2010 07:04:51 下午
+
+#   (generated by ArcGIS/ModelBuilder)
+
+# Usage: rr <表达式> <计算>
+
+# ---------------------------------------------------------------------------
+
+# Import system modules
+
+import sys, string, os, arcgisscripting
+
+#批量数据图层备份
+
+# Create the Geoprocessor object
+
+gp = arcgisscripting.create()
+
+gp.AddToolbox("C:/Program Files (x86)/ArcGIS/ArcToolbox/Toolboxes/Analysis Tools.tbx")
+
+gp.overwriteoutput = 1
+
+def update59(DLTB,DLFH):
+
+        rows =gp.searchcursor(DLTB,"DLBM Like '2*'")
+
+        row = rows.Next()
+
+        uniqueList = []
+
+        while row:
+
+                if row.GetValue("DLBM") not in uniqueList:
+
+                        uniqueList.append(row.GetValue("DLBM"))
+
+                row = rows.Next()
+
+        dltb_Layer="dltb_Layer"
+
+        dlfh_layer="dlfh_layer"
+
+        for dldm in uniqueList:
+
+                gp.MakeFeatureLayer_management(DLTB, dltb_Layer, "[DLBM] LIKE '"+dldm+"'")
+
+                gp.MakeFeatureLayer_management(DLFH, dlfh_layer)
+
+                gp.SelectLayerByLocation_management(dlfh_layer, "INTERSECT", dltb_Layer, "", "NEW_SELECTION")
+
+                if (dldm==201) or  (dldm==202) or (dldm==203):
+
+                        gp.AddMessage("删除:"+str(gp.getcount(dlfh_layer)))
+
+                        gp.DeleteFeatures_management(dlfh_layer) #不需要地类符号                    
+
+                       
+
+                else:
+
+                        result=gp.CalculateField_management(dlfh_layer, "DLBM", dldm, "VB", "")
+
+                        gp.AddMessage("更新:"+str(result)+":"+str(gp.getcount(dlfh_layer)))
+
+       
+
+inworkspace = gp.GetParameterAsText(0) #分幅数据所在目录哦
+
+layername = "DLFH" #原始名称
+
+newlayername = "DLFH1" #新名称
+
+for root, dirs, files  in os.walk(inworkspace):
+
+        gp.workspace = root
+
+        workspaces = gp.listworkspaces("*", "access")
+
+        workspace = workspaces.next()
+
+        while workspace:
+
+                try:
+
+                        gp.workspace = workspace
+
+                        DLTB_Select=workspace+"\"+layername
+
+                        newtablename=workspace+"\"+newlayername
+
+                       
+
+                        if not gp.Exists(newtablename):
+
+                                gp.Select_analysis(DLTB_Select,newtablename,"") #备份
+
+                                gp.AddMessage("备份:"+DLTB_Select+"为:"+newtablename)
+
+                        gp.CalculateField_management(DLTB_Select, "DLBM", "mid([DLBM],1,3)", "VB", "")
+
+                        #更新05-09符号
+
+                        DLTB=workspace+"\\DLTB"
+
+                        update59(DLTB,DLTB_Select)                      
+
+                       
+
+                       
+
+                       
+
+                except Exception, ErrorDesc:
+
+                        gp.AddError(str(ErrorDesc))
+
+                workspace = workspaces.next()
